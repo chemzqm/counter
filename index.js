@@ -1,9 +1,6 @@
 var template = require('./template');
 var domify = require ('domify');
 var $ = require ('jquery');
-var transition = require ('has-transitions');
-
-
 
 function Counter (parent) {
   var el = domify(template);
