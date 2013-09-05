@@ -1,0 +1,22 @@
+{
+  "name": "counter",
+  "repo": "chemzqm/counter",
+  "description": "A simple counter for component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/domify": "*",
+    "yields/has-transitions": "*",
+    "component/jquery": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "counter.css"
+  ]
+}

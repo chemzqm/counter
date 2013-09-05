@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example of counter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="build/build.css">
+    <script src="build/build.js"></script>
+    <style>
+      body {
+        padding:100px;
+      }
+      #counter {
+        width: 200px;
+        height: 25px;
+        font-size: 25px;
+        line-height: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="counter">
+    </div>
+
+    <script>
+      var Counter = require('counter');
+      var p = document.getElementById('counter');
+      var counter = new Counter(p);
+      counter.digit(13764324);
+      setTimeout(function(){
+        counter.digit(13242);
+        setTimeout(function(){
+          counter.digit(9842742);
+        },2000)
+      },2000)
+    </script>
+  </body>
+</html>
