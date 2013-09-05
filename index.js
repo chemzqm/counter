@@ -33,7 +33,7 @@ Counter.prototype.setValues = function() {
   var cArr = this.str.split('').reverse();
   var pArr = this.pre.split('').reverse();
   var total = this.list.length;
-  this.list.addClass('animate');
+  this.list.addClass('counter-animate');
   var self = this;
   for (var i = 0; i < total; i++) {
     var li = this.list.eq(total - i - 1);
@@ -66,7 +66,7 @@ Counter.prototype.setValues = function() {
 Counter.prototype.reset = function() {
   var self = this;
   var preCount = this.list.length - this.str.length;
-  this.list.removeClass('animate');
+  this.list.removeClass('counter-animate');
   this.list.css('top', (0 - this.height) + 'px')
   .each(function(i) {
     if (i < preCount) {

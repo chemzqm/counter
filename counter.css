@@ -15,7 +15,7 @@
   position: absolute;
 }
 
-.counter-wrapper.animate {
+.counter-wrapper.counter-animate {
   transition: 0.4s;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
