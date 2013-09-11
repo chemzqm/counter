@@ -1,7 +1,6 @@
+# Counter
 
-# counter
-
-  A simple counter for component
+  A simple counter with number change animation for component
 
 ## Installation
 
@@ -11,7 +10,22 @@
 
 ## API
 
+### new Counter(parentNode)
 
+Init new Counter in parentNode.
+
+### .digit(number)
+
+Set the display integer of Counter.
+
+## Example
+
+``` js
+var Counter = require('counter');
+var p = document.getElementById('counter');
+var counter = new Counter(p);
+counter.digit(13764324);)
+```
 
 ## License
 
