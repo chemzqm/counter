@@ -2,6 +2,11 @@ var template = require('./template');
 var domify = require ('domify');
 var $ = require ('jquery');
 
+/**
+ *
+ * @param {Node} parent node
+ * @api public
+ */
 function Counter (parent) {
   var el = domify(template);
   parent.appendChild(el);
@@ -15,17 +20,28 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+
+/**
+ * Set the digit value
+ *
+ * @param {Number} number
+ * @api public
+ */
 Counter.prototype.digit = function(number) {
   this.pre = this.str;
   this.str = numberWithCommas(number);
   if (!this.pre) {
     this.reset();
   } else {
-    var preCount = this.list.length - this.str.length;
     this.setValues();
   }
 }
 
+/**
+ * Set and show the current digit value
+ *
+ * @api rpivate
+ */
 Counter.prototype.setValues = function() {
   var cArr = this.str.split('').reverse();
   var pArr = this.pre.split('').reverse();
@@ -60,6 +76,11 @@ Counter.prototype.setValues = function() {
   }, 400);
 }
 
+/**
+ * reset the elements positions
+ *
+ * @api private
+ */
 Counter.prototype.reset = function() {
   var self = this;
   var preCount = this.list.length - this.str.length;
@@ -73,4 +94,5 @@ Counter.prototype.reset = function() {
     }
   })
 }
+
 module.exports = Counter;
