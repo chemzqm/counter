@@ -1,0 +1,22 @@
+.counter {
+  height: 100%;
+}
+.counter li {
+  display: block;
+  list-style: none;
+  float: left;
+  height: 100%;
+  width: 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+.counter-wrapper {
+  position: absolute;
+}
+
+.counter-wrapper.counter-animate {
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+}
