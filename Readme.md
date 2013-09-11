@@ -2,6 +2,8 @@
 
   A simple counter with number change animation for component
 
+  [Demo](http://chemzqm.github.io/counter/index.html)
+
 ## Installation
 
   Install with [component(1)](http://component.io):
