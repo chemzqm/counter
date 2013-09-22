@@ -1,13 +1,10 @@
 
-build: components index.js counter.css template.js
+build: components index.js counter.css
 	@component build --dev
 	@touch build
 
 start:
 	@component serve &
-
-template.js: template.html
-	@component convert $<
 
 components: component.json
 	@component install --dev
