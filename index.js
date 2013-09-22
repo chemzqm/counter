@@ -1,4 +1,3 @@
-var template = require('./template');
 var dom = require ('dom');
 
 var styles = window.getComputedStyle;
