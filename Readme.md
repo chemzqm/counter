@@ -12,9 +12,9 @@
 
 ## API
 
-### new Counter(parentNode)
+### new Counter(parentNode, [count])
 
-Init new Counter in parentNode.
+Init new Counter in parentNode and optional charactor count (default 10).
 
 ### .digit(number)
 
