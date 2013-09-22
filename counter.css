@@ -13,6 +13,11 @@
 
 .counter-wrapper {
   position: absolute;
+  height: 100%;
+}
+
+.counter-wrapper > div {
+  height: 100%;
 }
 
 .counter-wrapper.counter-animate {

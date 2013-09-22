@@ -1,18 +1,24 @@
 var template = require('./template');
-var domify = require ('domify');
-var $ = require ('jquery');
+var dom = require ('dom');
 
+var styles = window.getComputedStyle;
+
+var itemHtml = '<li><div class="counter-wrapper"><div></div><div></div><div></div></div></li>';
 /**
  *
  * @param {Node} parent node
+ * @param {Number} count [optional] charactor count, default 10 (10 million)
  * @api public
  */
-function Counter (parent) {
-  var el = domify(template);
-  parent.appendChild(el);
-  this.height = $(el).height();
-  this.list = $(el).find('.counter-wrapper');
-  this.list.find('div').height(this.height);
+function Counter (parent, count) {
+  count = count || 10;
+  var el = dom('<ul class="counter"></ul>');
+  el.appendTo(parent);
+  for (var i = 0; i < count; i++) {
+    dom(itemHtml).appendTo(el);
+  }
+  this.list = el.find('.counter-wrapper');
+  this.height = parseInt(styles(parent).height, 10);
 }
 
 function numberWithCommas(x) {
@@ -33,7 +39,7 @@ Counter.prototype.digit = function(number) {
   if (!this.pre) {
     this.reset();
   } else {
-    this.setValues();
+    this.changeValues();
   }
 }
 
@@ -42,32 +48,32 @@ Counter.prototype.digit = function(number) {
  *
  * @api rpivate
  */
-Counter.prototype.setValues = function() {
+Counter.prototype.changeValues = function() {
   var cArr = this.str.split('').reverse();
   var pArr = this.pre.split('').reverse();
-  var total = this.list.length;
+  var total = this.list.length();
   this.list.addClass('counter-animate');
   var self = this;
   for (var i = 0; i < total; i++) {
-    var li = this.list.eq(total - i - 1);
+    var li = this.list.at(total - i - 1);
     var cv = cArr[i];
     var pv = pArr[i];
     var divs = li.find('div');
     if (cv) {
-      li.show();
+      li.css('display', 'block');
     } else {
-      li.hide();
+      li.css('display', 'none');
     }
     if (cv && pv) {
       if (cv > pv) {
-        divs.eq(0).html(cv);
+        divs.first().html(cv);
         li.css('top', '0px');
       } else if (cv < pv) {
-        divs.eq(2).html(cv);
+        divs.last().html(cv);
         li.css('top', (0 - this.height*2) + 'px');
       }
     } else if (cv) {
-      divs.eq(1).html(cv);
+      divs.at(1).html(cv);
       li.css('top', (0 - this.height) + 'px');
     }
   }
@@ -83,14 +89,14 @@ Counter.prototype.setValues = function() {
  */
 Counter.prototype.reset = function() {
   var self = this;
-  var preCount = this.list.length - this.str.length;
+  var preCount = this.list.length() - this.str.length;
   this.list.removeClass('counter-animate');
-  this.list.css('top', (0 - this.height) + 'px')
-  .each(function(i) {
+  this.list.css('top', (0 - this.height) + 'px');
+  this.list.each(function(li, i) {
     if (i < preCount) {
-      $(this).hide();
+      li.css('display', 'none');
     } else {
-      $(this).find('div').get(1).innerHTML = self.str[i - preCount];
+      li.find('div').at(1).html(self.str[i - preCount]);
     }
   })
 }
